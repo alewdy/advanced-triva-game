@@ -12,34 +12,34 @@ $(document).on('click','#reset',function(){
 })
 
 var questions = [{
-    question:"The term wake, kettle, or committee refers to a group of what bird?",
-    answers:["Vulture", "Flamingo", "Geese", "Bald Eagle"],
-    correctAnswer: "Vulture",
+    question:"Who hit the first home run at the current Yankee Stadium?",
+    answers:["Alex Rodriguez", "Derek Jeter", "Jorge Posada", "Hideki Matsui"],
+    correctAnswer: "Jorge Posada",
     image: ""
 }, {
-    question:"In the 1997 American science fiction comedy Men in Black, which actor played Agent K?",
-    answers:["Tom Hanks", "Anthony Hopkins", "Tommy Lee Jones", "Denzel Washington"],
-    correctAnswer: "Tommy Lee Jones",
+    question:"Who was the longest tenured Yankee captain?",
+    answers:["Derek Jeter", "Lou Gehrig", "Don Mattingly", "Babe Ruth"],
+    correctAnswer: "Derek Jeter",
     image: "" 
 }, {
-    question:"The slogan “Just Do It” was created in 1988 for which company?",
-    answers:["Adidas", "Nike", "Asics", "Reebok"],
-    correctAnswer: "Nike",
+    question:"Mickey Mantle hit a record 18 World Series home runs in his career. Which Yankee is in second place with 15 World Series home runs?",
+    answers:["Yogi Bera", "Bernie Williams", "Babe Ruth", "Reggie Jackson"],
+    correctAnswer: "Babe Ruth",
     image: ""
 }, {
-    question:"What fast food franchise has the most worldwide locations?",
-    answers:["Subway", "Mcdonalds", "Wendy's", "Burger King"],
-    correctAnswer: "Subway",
+    question:"Yogi Berra's iconic nickname was not given to him by a Yankee but by this childhood friend who went on to be a member of the 1954 world champion New York Giants. Who is this friend?",
+    answers:["Willie Mays", "Whitey Lockman", "Bobby Hofman", "Leo Durocher"],
+    correctAnswer: "Bobby Hofman",
     image: ""
 }, {
-    question:"In what year did the Houston Texans become a team in the US National Football League?",
-    answers:["2003", "1997", "1984", "2002"],
-    correctAnswer: "2002",
+    question:"This Yankee was the first relief pitcher to win the American League Cy Young Award:",
+    answers:["Rich Gossage", "Mariano Rivera", "Sparky Lyle", "Mark Teixeira"],
+    correctAnswer: "Sparky Lyle",
     image: ""
 }, {
-    question:"What is the largest internal organ of the human body?",
-    answers:["Stomach", "Heart", "Pancreas", "Liver"],
-    correctAnswer: "Liver",
+    question:"On Aug. 25, 2011, Robinson Cano, Russell Martin and this guy made the Yankees the first team in MLB history to hit three grand slams in one game:",
+    answers:["Alex Rodriguez", "Curtis Granderson", "Nick Swisher", "Mar Teixeira"],
+    correctAnswer: "Curtis Granderson",
     image: ""
 }]
 
@@ -60,11 +60,12 @@ var game = {
     },
     loadQuestion: function(){
         timer = setInterval(game.countdown,1000);
-        $('#subwrapper').html('<h2>' + questions[game.currentQuestion].question + '</h2>')
+        $('#subwrapper').html("<h2 id='counter'>30</h2>");
+        $('#subwrapper').append('<h2>' + questions[game.currentQuestion].question + '</h2>')
         for(var i=0;i<questions[game.currentQuestion].answers.length;i++){
             $('#subwrapper').append('<button class="answer-button" id="button-'+i+'" data-name="'+questions[game.
                 currentQuestion].answers[i]+'">'+questions[game.
-                currentQuestion].answers[i]+'</button>')
+                currentQuestion].answers[i]+'</button>' + '<br>')
         }
     },
     nextQuestion: function(){
@@ -104,7 +105,7 @@ var game = {
         console.log("RIGHT")
         clearInterval(timer)
         game.correct++;
-        $('#subwrapper').html('<h2>YOU GOT IT RIGHT!</h2>');
+        $('#subwrapper').html('<h2>YOU GOT IT RIGHT!</h2>' + game.questions);
         if(game.currentQuestion==questions.length-1){
             setTimeout(game.results,2*1000);
         } else {
